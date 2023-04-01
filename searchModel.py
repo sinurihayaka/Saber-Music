@@ -43,41 +43,37 @@ class kuwosearchThread(QThread):
         self.model=model
 
     def run(self):
-        if self.word == "":
-            print("No word.")
-        else:
-            all_singers = []  # 放置所有歌手人名
-            names = []  # 放置歌曲名字
-            all_rid = []  # 放置所有rid，rid是网页所需参数
-            for p in range(2):
-                url = "http://www.kuwo.cn/api/www/search/searchMusicBykeyWord?key={}&pn={}&rn=30&httpsStatus=1&reqId=da11ad51-d211-11ea-b197-8bff3b9f83d2e".format(self.word, str(p + 1))
-                response = requests.get(url, headers=headers2)
-                response.encoding = response.apparent_encoding
-                response = response.json()  # 得到josn字典dict
-                try:
-                    music_list = response["data"]["list"]  # 得到歌曲列表
-                except:
-                    pass
-                    break
-                else:
-                    a = 0
-                    for music in music_list:
-                        singer = music["artist"]  # 歌手名
-                        name = music["name"]  # 歌曲名
+        for p in range(2):
+            url = "http://www.kuwo.cn/api/www/search/searchMusicBykeyWord?key={}&pn={}&rn=30&httpsStatus=1&reqId=da11ad51-d211-11ea-b197-8bff3b9f83d2e".format(self.word, str(p + 1))
+            response = requests.get(url, headers=headers2)
+            response.encoding = response.apparent_encoding
+            response = response.json()  # 得到josn字典dict
+            try:
+                music_list = response["data"]["list"]  # 得到歌曲列表
+            except:
+                pass
+                break
+            else:
+                a = 0
+                for music in music_list:
+                    singer = music["artist"]  # 歌手名
+                    name = music["name"]  # 歌曲名
 
-                        rid = music["musicrid"]  # 取出rid，之后要对这个字符串进行切割
-                        index = rid.find('_')
-                        rid = rid[index + 1:len(rid)]
+                    rid = music["musicrid"]  # 取出rid，之后要对这个字符串进行切割
+                    index = rid.find('_')
+                    rid = rid[index + 1:len(rid)]
+                    urlm = 'http://www.kuwo.cn/api/v1/www/music/playUrl?mid={}&type=convert'.format(rid)
+                    resp = requests.get(url=urlm, headers=headers)
+                    dd = json.dumps(resp.text)
+                    resp = json.loads(dd)
+                    resp = json.loads(resp)["data"]["url"]
 
-                        all_singers.append(singer)  # 将对应信息放到列表中
-                        names.append(name)
-                        all_rid.append(rid)
-                        a = a + 1
-            for i in range(len(names)):
-                itemProject = QStandardItem(names[i])
-                self.model.appendRow(itemProject)
-                self.model.setItem(i, 1, QStandardItem(all_singers[i]))
-                self.model.setItem(i, 2, QStandardItem(all_rid[i]))
+                    itemProject = QStandardItem(name)
+                    self.model.appendRow(itemProject)
+                    self.model.setItem(a, 1, QStandardItem(singer))
+                    self.model.setItem(a, 2, QStandardItem(resp))
+                    a = a + 1
+
 
 
 class kugousearchThread(QThread):
@@ -87,12 +83,8 @@ class kugousearchThread(QThread):
         self.model = model
 
     def run(self):
-        all_singers = []  # 放置所有歌手人名
-        names = []  # 放置歌曲名字
-        all_rid = []  # 放置所有rid，rid是网页所需参数
-        content_url_list = []
-        music_listu = [] #url播放列表
-        for p in range(1):
+        a = 0
+        for p in range(2):
             url = "https://songsearch.kugou.com/song_search_v2?callback=jQuery112405886208845288214_1588464073802&keyword={}&page={}&pagesize=30&userid=-1&clientver=&platform=WebFilter&tag=em&filter=2&iscorrection=1&privilege_filter=0&_=1588464073804".format(self.word, str(p + 1))
             response = requests.get(url, headers=headers3).text
             music_list_html = re.findall(r'\((.*)\)', response)[0]
@@ -100,13 +92,8 @@ class kugousearchThread(QThread):
             for i in range(len(music_list["data"]["lists"])):
                 music_hash = music_list["data"]["lists"][i]["FileHash"]  # 关键字 hash
                 music_albumid = music_list["data"]["lists"][i]["AlbumID"]  # 关键字album_id
-                all_rid.append(music_albumid)
                 information_url = "https://wwwapi.kugou.com/yy/index.php?r=play/getdata&callback=jQuery19101144344902676131_1588093696865&hash={}&album_id={}&dfid=2AHvg428HZSx0oRNWX0prTMo&mid=4b42424f9fa4d173c4601c6b476003f2&platid=4&_=1588093696867".format(music_hash, music_albumid)
-                content_url_list.append(information_url)  # 包含歌曲详细信息
-
-            for i in content_url_list:
-                url = i
-                response = requests.get(url, headers=headers).text
+                response = requests.get(information_url, headers=headers).text
                 cut_json = re.findall(r'\((.*)\)', response)[0]  # 格式为json格式
                 cut_dict = json.loads(cut_json)  # 转换为字典格式 才能根据键获取值
                 try:
@@ -114,14 +101,11 @@ class kugousearchThread(QThread):
                 except:
                     pass
                 else:
-                    music_listu.append(music_url)
                     music_name = cut_dict["data"]["song_name"]  # 歌曲名
                     singer = cut_dict["data"]["author_name"]
 
-                    all_singers.append(singer)
-                    names.append(music_name)
-            for i in range(len(names)):
-                itemProject = QStandardItem(names[i])
-                self.model.appendRow(itemProject)
-                self.model.setItem(i, 1, QStandardItem(all_singers[i]))
-                self.model.setItem(i, 2, QStandardItem(music_listu[i]))
+                    itemProject = QStandardItem(music_name)
+                    self.model.appendRow(itemProject)
+                    self.model.setItem(a, 1, QStandardItem(singer))
+                    self.model.setItem(a, 2, QStandardItem(music_url))
+                    a = a + 1

@@ -14,9 +14,9 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1300, 830)
-        MainWindow.setMinimumSize(QtCore.QSize(1300, 830))
-        MainWindow.setMaximumSize(QtCore.QSize(1300, 830))
+        MainWindow.resize(1300, 850)
+        MainWindow.setMinimumSize(QtCore.QSize(1300, 850))
+        MainWindow.setMaximumSize(QtCore.QSize(1300, 850))
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap("res/pics/saber.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         MainWindow.setWindowIcon(icon)
@@ -24,54 +24,8 @@ class Ui_MainWindow(object):
         MainWindow.setStyleSheet("")
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
-        self.label = QtWidgets.QLabel(self.centralwidget)
-        self.label.setGeometry(QtCore.QRect(0, 0, 1301, 801))
-        self.label.setText("")
-        self.label.setPixmap(QtGui.QPixmap("res/pics/background.png"))
-        self.label.setScaledContents(True)
-        self.label.setObjectName("label")
-        self.label_3 = QtWidgets.QLabel(self.centralwidget)
-        self.label_3.setGeometry(QtCore.QRect(170, 80, 281, 71))
-        font = QtGui.QFont()
-        font.setFamily("UD Digi Kyokasho NP-R")
-        font.setPointSize(24)
-        self.label_3.setFont(font)
-        self.label_3.setObjectName("label_3")
-        self.lineEdit = QtWidgets.QLineEdit(self.centralwidget)
-        self.lineEdit.setGeometry(QtCore.QRect(430, 80, 471, 71))
-        font = QtGui.QFont()
-        font.setFamily("幼圆")
-        font.setPointSize(24)
-        self.lineEdit.setFont(font)
-        self.lineEdit.setStyleSheet("#lineEdit\n"
-"{\n"
-"border-radius:20px;\n"
-"background-color:#dedfa9;\n"
-"color:white;\n"
-"border-bottom:1px solid rgb(222,223,169);\n"
-"}")
-        self.lineEdit.setText("")
-        self.lineEdit.setObjectName("lineEdit")
-        self.pushButton = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton.setGeometry(QtCore.QRect(910, 80, 51, 71))
-        self.pushButton.setCursor(QtGui.QCursor(QtCore.Qt.ArrowCursor))
-        self.pushButton.setStyleSheet("#pushButton{\n"
-"border: 1px solid #dcdfe6;\n"
-"padding: 10px;\n"
-"border-radius: 5px;}\n"
-"\n"
-"#pushButton:hover {\n"
-"background-color: rgb(255,255,209);\n"
-"border: 1px solid rgb(222,223,169);\n"
-"}")
-        self.pushButton.setText("")
-        icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap("res/pics/search.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton.setIcon(icon1)
-        self.pushButton.setIconSize(QtCore.QSize(45, 45))
-        self.pushButton.setObjectName("pushButton")
         self.textEdit = QtWidgets.QTextEdit(self.centralwidget)
-        self.textEdit.setGeometry(QtCore.QRect(960, 160, 250, 561))
+        self.textEdit.setGeometry(QtCore.QRect(940, 130, 291, 671))
         font = QtGui.QFont()
         font.setFamily("微软雅黑")
         font.setPointSize(10)
@@ -80,14 +34,14 @@ class Ui_MainWindow(object):
 "{\n"
 "border-radius:25px;\n"
 "border:1px solid rgb(222,223,169);\n"
-"background-color:#ffffdb;\n"
+"background:rgba(255, 255, 255, 200)\n"
 "}")
         self.textEdit.setDocumentTitle("")
         self.textEdit.setReadOnly(True)
         self.textEdit.setMarkdown("")
         self.textEdit.setObjectName("textEdit")
         self.comboBox = QtWidgets.QComboBox(self.centralwidget)
-        self.comboBox.setGeometry(QtCore.QRect(90, 650, 201, 51))
+        self.comboBox.setGeometry(QtCore.QRect(80, 740, 201, 51))
         font = QtGui.QFont()
         font.setFamily("幼圆")
         font.setPointSize(14)
@@ -100,30 +54,190 @@ class Ui_MainWindow(object):
         self.comboBox.setCurrentText("")
         self.comboBox.setPlaceholderText("")
         self.comboBox.setObjectName("comboBox")
-        self.pushButton_4 = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton_4.setGeometry(QtCore.QRect(870, 650, 71, 50))
-        self.pushButton_4.setStyleSheet("#pushButton_4\n"
-"{\n"
-"border:none;\n"
-"}\n"
+        self.bg = QtWidgets.QLabel(self.centralwidget)
+        self.bg.setGeometry(QtCore.QRect(0, 0, 1300, 850))
+        self.bg.setText("")
+        self.bg.setPixmap(QtGui.QPixmap("res/pics/bg.png"))
+        self.bg.setObjectName("bg")
+        self.horizontalFrame = QtWidgets.QFrame(self.centralwidget)
+        self.horizontalFrame.setGeometry(QtCore.QRect(1010, 40, 221, 80))
+        self.horizontalFrame.setObjectName("horizontalFrame")
+        self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.horizontalFrame)
+        self.horizontalLayout_2.setObjectName("horizontalLayout_2")
+        self.hide = QtWidgets.QPushButton(self.horizontalFrame)
+        self.hide.setMinimumSize(QtCore.QSize(60, 60))
+        self.hide.setStyleSheet("#hide{\n"
+"border: none;}\n"
 "\n"
-"#pushButton_4:hover{\n"
+"#hide:hover {\n"
 "padding-bottom:5px;\n"
+"}")
+        self.hide.setText("")
+        icon1 = QtGui.QIcon()
+        icon1.addPixmap(QtGui.QPixmap("res/pics/hide.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.hide.setIcon(icon1)
+        self.hide.setIconSize(QtCore.QSize(40, 40))
+        self.hide.setObjectName("hide")
+        self.horizontalLayout_2.addWidget(self.hide)
+        self.minSize = QtWidgets.QPushButton(self.horizontalFrame)
+        self.minSize.setMinimumSize(QtCore.QSize(60, 60))
+        self.minSize.setStyleSheet("#minSize{\n"
+"border: none;}\n"
+"\n"
+"#minSize:hover {\n"
+"padding-bottom:5px;\n"
+"}")
+        self.minSize.setText("")
+        icon2 = QtGui.QIcon()
+        icon2.addPixmap(QtGui.QPixmap("res/pics/minsize.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.minSize.setIcon(icon2)
+        self.minSize.setIconSize(QtCore.QSize(40, 40))
+        self.minSize.setObjectName("minSize")
+        self.horizontalLayout_2.addWidget(self.minSize)
+        self.close = QtWidgets.QPushButton(self.horizontalFrame)
+        self.close.setMinimumSize(QtCore.QSize(60, 60))
+        self.close.setStyleSheet("#close{\n"
+"border: none;}\n"
+"\n"
+"#close:hover {\n"
+"padding-bottom:5px;\n"
+"}")
+        self.close.setText("")
+        icon3 = QtGui.QIcon()
+        icon3.addPixmap(QtGui.QPixmap("res/pics/close.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.close.setIcon(icon3)
+        self.close.setIconSize(QtCore.QSize(40, 40))
+        self.close.setObjectName("close")
+        self.horizontalLayout_2.addWidget(self.close)
+        self.pushButton = QtWidgets.QPushButton(self.centralwidget)
+        self.pushButton.setGeometry(QtCore.QRect(920, 45, 71, 67))
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.pushButton.sizePolicy().hasHeightForWidth())
+        self.pushButton.setSizePolicy(sizePolicy)
+        self.pushButton.setCursor(QtGui.QCursor(QtCore.Qt.ArrowCursor))
+        self.pushButton.setStyleSheet("#pushButton{\n"
+"border: 1px solid #dcdfe6;\n"
+"padding: 10px;\n"
+"border-radius: 5px;}\n"
+"\n"
+"#pushButton:hover {\n"
+"background-color: rgb(255,255,209);\n"
+"border: 1px solid rgb(222,223,169);\n"
+"}")
+        self.pushButton.setText("")
+        icon4 = QtGui.QIcon()
+        icon4.addPixmap(QtGui.QPixmap("res/pics/search.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.pushButton.setIcon(icon4)
+        self.pushButton.setIconSize(QtCore.QSize(45, 45))
+        self.pushButton.setObjectName("pushButton")
+        self.AboutButton = QtWidgets.QPushButton(self.centralwidget)
+        self.AboutButton.setGeometry(QtCore.QRect(80, 40, 80, 80))
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.AboutButton.sizePolicy().hasHeightForWidth())
+        self.AboutButton.setSizePolicy(sizePolicy)
+        self.AboutButton.setMinimumSize(QtCore.QSize(0, 0))
+        self.AboutButton.setStyleSheet("#AboutButton{\n"
+"border:none;\n"
+"padding:2px;\n"
+"}\n"
+"#AboutButton:hover {\n"
+"border: 2px solid rgb(44, 44, 44,100);\n"
+"border-radius:5px;\n"
+"}")
+        self.AboutButton.setText("")
+        icon5 = QtGui.QIcon()
+        icon5.addPixmap(QtGui.QPixmap("res/pics/saber.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.AboutButton.setIcon(icon5)
+        self.AboutButton.setIconSize(QtCore.QSize(70, 70))
+        self.AboutButton.setObjectName("AboutButton")
+        self.title = QtWidgets.QLabel(self.centralwidget)
+        self.title.setGeometry(QtCore.QRect(160, 60, 240, 50))
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.title.sizePolicy().hasHeightForWidth())
+        self.title.setSizePolicy(sizePolicy)
+        font = QtGui.QFont()
+        font.setFamily("UD Digi Kyokasho NP-R")
+        font.setPointSize(24)
+        self.title.setFont(font)
+        self.title.setObjectName("title")
+        self.lineEdit = QtWidgets.QLineEdit(self.centralwidget)
+        self.lineEdit.setGeometry(QtCore.QRect(410, 45, 500, 70))
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.lineEdit.sizePolicy().hasHeightForWidth())
+        self.lineEdit.setSizePolicy(sizePolicy)
+        self.lineEdit.setMinimumSize(QtCore.QSize(470, 70))
+        font = QtGui.QFont()
+        font.setFamily("幼圆")
+        font.setPointSize(24)
+        self.lineEdit.setFont(font)
+        self.lineEdit.setStyleSheet("#lineEdit\n"
+"{\n"
+"border-radius:20px;\n"
+"background:rgba(0,0,0, 100);\n"
+"color:white;\n"
+"border-bottom:1px solid rgb(222,223,169);\n"
+"}")
+        self.lineEdit.setText("")
+        self.lineEdit.setObjectName("lineEdit")
+        self.tabWidget = QtWidgets.QTabWidget(self.centralwidget)
+        self.tabWidget.setGeometry(QtCore.QRect(80, 130, 851, 601))
+        font = QtGui.QFont()
+        font.setFamily("方正姚体")
+        font.setPointSize(12)
+        self.tabWidget.setFont(font)
+        self.tabWidget.setStyleSheet("QTabWidget::pane{\n"
+"min-width:70px;\n"
+"min-height:25px;\n"
+"border-top: 2px solid;\n"
+"border-radius:20px;\n"
+"background:rgba(255, 255, 255, 200)\n"
+"\n"
 "}\n"
 "\n"
-"#pushButton_4:pressed\n"
-"{\n"
-"padding-top:5px;\n"
-"padding-left:5px;\n"
+"QTabBar::tab {\n"
+"\n"
+"min-width:70px;\n"
+"\n"
+"min-height:25px;\n"
+"\n"
+"color: white;\n"
+"\n"
+"font: 15pt \"幼圆\";\n"
+"border: 0px solid;\n"
+"\n"
+"\n"
+"\n"
+"}\n"
+"\n"
+"QTabBar::tab:selected{\n"
+"\n"
+"min-width:70px;\n"
+"\n"
+"min-height:25px;\n"
+"color: white;\n"
+"\n"
+"    font: 12pt \"幼圆\";\n"
+"\n"
+"border: 0px solid;\n"
+"\n"
+"border-bottom: 2px solid;\n"
+"\n"
+"border-color: #4796f0;\n"
+"\n"
 "}")
-        self.pushButton_4.setText("")
-        icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap("res/pics/play.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton_4.setIcon(icon2)
-        self.pushButton_4.setIconSize(QtCore.QSize(50, 50))
-        self.pushButton_4.setObjectName("pushButton_4")
-        self.treeView = QtWidgets.QTreeView(self.centralwidget)
-        self.treeView.setGeometry(QtCore.QRect(90, 160, 851, 481))
+        self.tabWidget.setObjectName("tabWidget")
+        self.tab = QtWidgets.QWidget()
+        self.tab.setObjectName("tab")
+        self.treeView = QtWidgets.QTreeView(self.tab)
+        self.treeView.setGeometry(QtCore.QRect(0, 0, 851, 571))
         font = QtGui.QFont()
         font.setFamily("幼圆")
         font.setPointSize(12)
@@ -131,76 +245,102 @@ class Ui_MainWindow(object):
         self.treeView.setStyleSheet("#treeView\n"
 "{\n"
 "border-radius:20px;\n"
-"border:1px solid rgb(222,223,169);\n"
+"border:2px solid rgb(222,223,169);\n"
+"background:rgba(255, 255, 255, 0)\n"
 "}")
         self.treeView.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
         self.treeView.setObjectName("treeView")
-        self.AboutButton = QtWidgets.QPushButton(self.centralwidget)
-        self.AboutButton.setGeometry(QtCore.QRect(90, 75, 75, 75))
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.AboutButton.sizePolicy().hasHeightForWidth())
-        self.AboutButton.setSizePolicy(sizePolicy)
-        self.AboutButton.setStyleSheet("#AboutButton{\n"
+        self.tabWidget.addTab(self.tab, "")
+        self.tab_2 = QtWidgets.QWidget()
+        self.tab_2.setObjectName("tab_2")
+        self.treeView_2 = QtWidgets.QTreeView(self.tab_2)
+        self.treeView_2.setGeometry(QtCore.QRect(0, 0, 851, 571))
+        font = QtGui.QFont()
+        font.setFamily("幼圆")
+        font.setPointSize(12)
+        self.treeView_2.setFont(font)
+        self.treeView_2.setStyleSheet("#treeView_2\n"
+"{\n"
+"border-radius:20px;\n"
+"border:2px solid rgb(222,223,169);\n"
+"background:rgba(255, 255, 255, 0)\n"
+"}")
+        self.treeView_2.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
+        self.treeView_2.setObjectName("treeView_2")
+        self.tabWidget.addTab(self.tab_2, "")
+        self.horizontalLayoutWidget = QtWidgets.QWidget(self.centralwidget)
+        self.horizontalLayoutWidget.setGeometry(QtCore.QRect(770, 730, 160, 80))
+        self.horizontalLayoutWidget.setObjectName("horizontalLayoutWidget")
+        self.horizontalLayout = QtWidgets.QHBoxLayout(self.horizontalLayoutWidget)
+        self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout.setObjectName("horizontalLayout")
+        self.loveButton = QtWidgets.QPushButton(self.horizontalLayoutWidget)
+        self.loveButton.setStyleSheet("#loveButton\n"
+"{\n"
 "border:none;\n"
 "}\n"
-"#AboutButton:hover {\n"
-"border: 2px solid rgb(222,223,169);\n"
-"border-radius:5px;\n"
-"}")
-        self.AboutButton.setText("")
-        icon3 = QtGui.QIcon()
-        icon3.addPixmap(QtGui.QPixmap("res/pics/saber.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.AboutButton.setIcon(icon3)
-        self.AboutButton.setIconSize(QtCore.QSize(70, 70))
-        self.AboutButton.setObjectName("AboutButton")
-        self.pushButton_3 = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton_3.setGeometry(QtCore.QRect(1040, 80, 61, 60))
-        self.pushButton_3.setMinimumSize(QtCore.QSize(60, 60))
-        self.pushButton_3.setStyleSheet("#pushButton_3{\n"
-"border: 1px solid #dcdfe6;\n"
-"padding: 10px;\n"
-"border-radius: 5px;}\n"
 "\n"
-"#pushButton_3:hover {\n"
-"background-color: rgb(255,255,209);\n"
-"border: 1px solid rgb(222,223,169);\n"
-"}")
-        self.pushButton_3.setText("")
-        icon4 = QtGui.QIcon()
-        icon4.addPixmap(QtGui.QPixmap("res/pics/hide.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton_3.setIcon(icon4)
-        self.pushButton_3.setIconSize(QtCore.QSize(60, 60))
-        self.pushButton_3.setObjectName("pushButton_3")
-        self.pushButton_2 = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton_2.setGeometry(QtCore.QRect(1120, 80, 60, 60))
-        self.pushButton_2.setMinimumSize(QtCore.QSize(60, 60))
-        self.pushButton_2.setStyleSheet("#pushButton_2{\n"
-"border: 1px solid #dcdfe6;\n"
-"padding: 10px;\n"
-"border-radius: 5px;}\n"
+"#loveButton:hover{\n"
+"padding-bottom:5px;\n"
+"}\n"
 "\n"
-"#pushButton_2:hover {\n"
-"background-color: rgb(255,255,209);\n"
-"border: 1px solid rgb(222,223,169);\n"
+"#loveButton:pressed\n"
+"{\n"
+"padding-top:5px;\n"
+"padding-left:5px;\n"
 "}")
-        self.pushButton_2.setText("")
-        icon5 = QtGui.QIcon()
-        icon5.addPixmap(QtGui.QPixmap("res/pics/close.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton_2.setIcon(icon5)
-        self.pushButton_2.setIconSize(QtCore.QSize(60, 60))
-        self.pushButton_2.setObjectName("pushButton_2")
+        self.loveButton.setText("")
+        icon6 = QtGui.QIcon()
+        icon6.addPixmap(QtGui.QPixmap("res/pics/love.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.loveButton.setIcon(icon6)
+        self.loveButton.setIconSize(QtCore.QSize(50, 50))
+        self.loveButton.setObjectName("loveButton")
+        self.horizontalLayout.addWidget(self.loveButton)
+        self.browseButton = QtWidgets.QPushButton(self.horizontalLayoutWidget)
+        self.browseButton.setStyleSheet("#browseButton\n"
+"{\n"
+"border:none;\n"
+"}\n"
+"\n"
+"#browseButton:hover{\n"
+"padding-bottom:5px;\n"
+"}\n"
+"\n"
+"#browseButton:pressed\n"
+"{\n"
+"padding-top:5px;\n"
+"padding-left:5px;\n"
+"}")
+        self.browseButton.setText("")
+        icon7 = QtGui.QIcon()
+        icon7.addPixmap(QtGui.QPixmap("res/pics/browser.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.browseButton.setIcon(icon7)
+        self.browseButton.setIconSize(QtCore.QSize(50, 50))
+        self.browseButton.setObjectName("browseButton")
+        self.horizontalLayout.addWidget(self.browseButton)
+        self.bg.raise_()
+        self.textEdit.raise_()
+        self.comboBox.raise_()
+        self.horizontalFrame.raise_()
+        self.pushButton.raise_()
+        self.AboutButton.raise_()
+        self.title.raise_()
+        self.lineEdit.raise_()
+        self.tabWidget.raise_()
+        self.horizontalLayoutWidget.raise_()
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
         self.comboBox.setCurrentIndex(-1)
-        self.pushButton_2.clicked.connect(MainWindow.close)
-        self.pushButton_3.clicked.connect(MainWindow.showMinimized)
+        self.tabWidget.setCurrentIndex(0)
+        self.minSize.clicked.connect(MainWindow.showMinimized)
+        self.close.clicked.connect(MainWindow.close)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "Saber Music"))
-        self.label_3.setText(_translate("MainWindow", "Saber Music"))
+        self.title.setText(_translate("MainWindow", "Saber Music"))
         self.lineEdit.setPlaceholderText(_translate("MainWindow", "搜索......"))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), _translate("MainWindow", "搜索"))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), _translate("MainWindow", "喜爱"))
